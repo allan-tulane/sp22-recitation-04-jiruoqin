@@ -38,8 +38,7 @@ def word_count_map(doc):
     """
     ###TODO
     splitedText = doc.split()
-    list_1s = [1 for i in range(len(splitedText))]
-    return list(zip(splitedText, list_1s))
+    return [(token, 1) for token in splitedText]
     
     
 
@@ -60,6 +59,7 @@ def word_count_reduce(group):
     NOTE: you should use call the `reduce` function here.
     """
     ###TODO
+    return (group[0], reduce(lambda x,y: x+y, 0, group[1]))
     
     
 def test_word_count_reduce():
@@ -134,6 +134,16 @@ def sentiment_map(doc,
     [('negative', 1), ('negative', 1)]
     """
     ###TODO
+    splitedText = doc.split()
+    result = []
+    for i in splitedText:
+        if i in pos_terms:
+            result.append('positive')
+        elif i in neg_terms:
+            result.append('negative')
+        else:
+            pass
+    return [(token, 1) for token in result]
 
 
 def test_sentiment_map():
@@ -148,4 +158,3 @@ def test_sentiment():
     ]
     result = run_map_reduce(sentiment_map, word_count_reduce, docs)
     assert result == [('negative', 3), ('positive', 3)]
-
