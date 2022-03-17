@@ -38,7 +38,7 @@ To use this function to count words, you'll need to implement your own `map_f` a
 
 **Enter answer here**
 
-**Answer:** Since addition is $W(1)$, then the work of `word_count_reduce` for word appears `n` times is $W(n) = 2W(\frac{W}{2})+1 \in O(n)$, whereas its span is $S(n) = S(\frac{n}{2})+1 \in O(\lg 2)$.
+**Answer:** Since addition is $W(1)$, then the work of `word_count_reduce` for word appears `n` times is $W(n) = 2W(\frac{W}{2})+1 \in O(n)$, whereas its span is $S(n) = S(\frac{n}{2})+1 \in O(\lg n)$.
 
 ![](image/recitation-04/1647462553186.png)
 
@@ -58,7 +58,7 @@ What is the problem that prevents us from easily parallelizing this solution?
 
 **Enter answer here**
 
-**Answer:** race condition?
+**Answer:** This count-word function is not a pure program becuase it has side effects which writes to an existing memory location (i.e., updating `counts`). When we try to implement parallelism to not-pure programs, the problem of race condition arises. The result will thus be indeterministic. 
 
 
 ## Part 2: Sentiment analysis
