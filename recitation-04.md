@@ -58,7 +58,7 @@ What is the problem that prevents us from easily parallelizing this solution?
 
 **Enter answer here**
 
-**Answer:** This count-word function is not a pure program becuase it has side effects which writes to an existing memory location (i.e., updating `counts`). When we try to implement parallelism to not-pure programs, the problem of race condition arises. The result will thus be indeterministic. 
+**Answer:** This count-word function is completely sequential, i.e., it has to go thorugh every for loop steps. Such struture leaves no sapce for parallelism. 
 
 
 ## Part 2: Sentiment analysis
